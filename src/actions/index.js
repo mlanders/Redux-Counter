@@ -1,5 +1,6 @@
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
+export const RESET = 'RESET';
 
 // Our action creators will return
 // an action packet that our reducer will
@@ -20,7 +21,14 @@ export const increment = count => {
 export const decrement = count => {
 	console.log('decrement' + count);
 	return {
-		type: 'DECREMENT',
+		type: DECREMENT,
 		payload: { count: count - 1 },
+	};
+};
+
+export const reset = () => {
+	return {
+		type: RESET,
+		payload: { count: 0 },
 	};
 };

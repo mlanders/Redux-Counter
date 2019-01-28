@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { increment, decrement } from '../actions';
+import { increment, decrement, reset } from '../actions';
 
 class Counter extends Component {
 	incrementIfOdd = () => {
@@ -24,12 +24,16 @@ class Counter extends Component {
 			e.preventDefault();
 			this.props.decrement(this.props.count);
 		};
-
+		const handleReset = e => {
+			e.preventDefault();
+			this.props.reset();
+		};
 		return (
 			<p>
 				Clicked: {this.props.count} times
 				<button onClick={e => handleIncrement(e)}>+</button>
 				<button onClick={e => handleDecrement(e)}>-</button>
+				<button onClick={e => handleReset(e)}>Reset</button>
 				{/* Uncomment these button tags if you got
                 around to implementing the extra credit functions */}
 				{/* <button onClick={this.incrementIfOdd}>
@@ -62,5 +66,5 @@ const mapStateToProps = state => {
 // makes itself known to this component.
 export default connect(
 	mapStateToProps,
-	{ increment, decrement }
+	{ increment, decrement, reset }
 )(Counter);

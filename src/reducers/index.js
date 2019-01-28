@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT } from '../actions';
+import { INCREMENT, DECREMENT, RESET } from '../actions';
 
 const initialState = {
 	count: 0,
@@ -16,7 +16,8 @@ export default (state = initialState, action) => {
 			return { ...state, count: action.payload.count };
 		case DECREMENT:
 			console.log('decrement reducer ' + action.payload.count);
-
+			return { ...state, count: action.payload.count };
+		case RESET:
 			return { ...state, count: action.payload.count };
 		default:
 			return state;
